@@ -59,7 +59,12 @@
         "r6i.2xlarge": 0.504,
         "r6i.4xlarge": 1.008,
         "r6i.8xlarge": 2.016,
-        "r6i.16xlarge": 4.032
+        "r6i.16xlarge": 4.032,
+        "r6g.2xlarge": 0.4032,
+        "r6g.4xlarge": 0.8064,
+        "r6g.8xlarge": 1.6128,
+        "r6g.16xlarge": 3.2256,
+        "m4.xlarge": 0.2
       },
       "ap-south-1": {
         "i3.xlarge": 0.354,
@@ -81,7 +86,12 @@
         "r6i.2xlarge": 0.52,
         "r6i.4xlarge": 1.04,
         "r6i.8xlarge": 2.08,
-        "r6i.16xlarge": 4.16
+        "r6i.16xlarge": 4.16,
+        "r6g.2xlarge": 0.26,
+        "r6g.4xlarge": 0.52,
+        "r6g.8xlarge": 1.04,
+        "r6g.16xlarge": 2.08,
+        "m4.xlarge": 0.21
       }
     },
     "databricks": {
@@ -371,6 +381,46 @@
           "vcpu": 64,
           "memory": 512,
           "dbuPerHour": 16.32
+        },
+        {
+          "id": "r6g.2xlarge",
+          "family": "Memory optimized",
+          "vcpu": 8,
+          "memory": 64,
+          "dbuPerHour": 2,
+          "dbuPerHourBasis": "Verified against Databricks AWS pricing calculator (Premium Jobs Compute), 2026-10-09."
+        },
+        {
+          "id": "r6g.4xlarge",
+          "family": "Memory optimized",
+          "vcpu": 16,
+          "memory": 128,
+          "dbuPerHour": 4,
+          "dbuPerHourBasis": "Verified against Databricks AWS pricing calculator (Premium Jobs Compute), 2026-10-09."
+        },
+        {
+          "id": "r6g.8xlarge",
+          "family": "Memory optimized",
+          "vcpu": 32,
+          "memory": 256,
+          "dbuPerHour": 8,
+          "dbuPerHourBasis": "Verified against Databricks AWS pricing calculator (Premium Jobs Compute), 2026-10-09."
+        },
+        {
+          "id": "r6g.16xlarge",
+          "family": "Memory optimized",
+          "vcpu": 64,
+          "memory": 512,
+          "dbuPerHour": 16,
+          "dbuPerHourBasis": "Verified against Databricks AWS pricing calculator (Premium Jobs Compute), 2026-10-09."
+        },
+        {
+          "id": "m4.xlarge",
+          "family": "General purpose",
+          "vcpu": 4,
+          "memory": 16,
+          "dbuPerHour": 0.75,
+          "dbuPerHourBasis": "Verified against Databricks AWS pricing calculator (Premium Jobs Compute), 2026-10-09."
         }
       ]
     }

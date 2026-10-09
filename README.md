@@ -79,7 +79,9 @@ Classic compute cost is DBU/hour × DBU rate × runtime hours, plus (driver VM r
 
 VM infrastructure prices are sourced from [Vantage Instances](https://instances.vantage.sh/) through Vantage Instances MCP. The dated MCP responses are retained in [vantage-snapshot.json](maintenance/vantage-snapshot.json) for audit and repeatable updates. Use each cloud's explicit regional VM rates when calculating infrastructure costs.
 
-VM prices were checked against Vantage Instances MCP on 2026-10-09: 102 regional rates matched. Six existing GCP C3 rates could not be retrieved and remain explicitly listed as unresolved in `source.vmPricingReference` and [refresh-report.json](maintenance/refresh-report.json). GCP retains its previous full-refresh date; `checkedOn` records this partial check. AWS and Azure have complete VM refreshes.
+VM prices were checked against Vantage Instances MCP on 2026-10-09: 112 regional rates matched. Six existing GCP C3 rates could not be retrieved and remain explicitly listed as unresolved in `source.vmPricingReference` and [refresh-report.json](maintenance/refresh-report.json). GCP retains its previous full-refresh date; `checkedOn` records this partial check. AWS and Azure have complete VM refreshes.
+
+AWS also includes `r6g.2xlarge`, `r6g.4xlarge`, `r6g.8xlarge`, `r6g.16xlarge`, and `m4.xlarge` in both regional VM tables and the job compute catalog. Their specifications and Linux on-demand rates were verified with Vantage Instances MCP; their DBU/hour values (2, 4, 8, 16, and 0.75 respectively) were verified against Databricks' Premium Jobs Compute pricing calculator on 2026-10-09. The source responses and Databricks rows are retained in [aws-sku-additions-2026-10-09.json](maintenance/aws-sku-additions-2026-10-09.json).
 
 Databricks DBU rates and instance DBU/hour values require separate verification against Databricks references. Vantage provides infrastructure pricing, not Databricks charges. The new AWS `i3.xlarge` has Vantage-verified VM rates, 4 vCPUs, and 30.5 GiB RAM; its 1 DBU/hour is an explicitly marked planning assumption derived from the existing `i3.2xlarge` entry.
 
