@@ -14,12 +14,26 @@ Static Databricks cost catalogs for AWS, Azure, and Google Cloud. This repositor
 
 `wrangler.jsonc` serves only `resources/` as static assets. No build command or application entry point is needed. In Cloudflare Workers Builds, leave the build command empty and keep the deploy command as `npx wrangler deploy`. The configured Worker name is `dbxcosts`; it must match the Worker connected to the repository.
 
-After deployment, the files are served at the root of your Worker or custom domain:
+The live CDN is https://dbxcosts.oltpdba.workers.dev. Fetch each cloud's JSON directly:
 
 ```text
-https://<your-worker-domain>/aws-databricks-costs.json
-https://<your-worker-domain>/azure-databricks-costs.json
-https://<your-worker-domain>/gcp-databricks-costs.json
+https://dbxcosts.oltpdba.workers.dev/aws-databricks-costs.json
+https://dbxcosts.oltpdba.workers.dev/azure-databricks-costs.json
+https://dbxcosts.oltpdba.workers.dev/gcp-databricks-costs.json
+```
+
+| Cloud | Live JSON |
+| --- | --- |
+| AWS | [AWS pricing](https://dbxcosts.oltpdba.workers.dev/aws-databricks-costs.json) |
+| Azure | [Azure pricing](https://dbxcosts.oltpdba.workers.dev/azure-databricks-costs.json) |
+| GCP | [GCP pricing](https://dbxcosts.oltpdba.workers.dev/gcp-databricks-costs.json) |
+
+```js
+const cloud = 'aws'; // 'aws', 'azure', or 'gcp'
+const response = await fetch(`https://dbxcosts.oltpdba.workers.dev/${cloud}-databricks-costs.json`);
+if (!response.ok) throw new Error(`Pricing request failed: ${response.status}`);
+const catalog = await response.json();
+const prices = catalog[cloud];
 ```
 
 JSON responses allow cross-origin browser access and use a five-minute browser cache. Unknown paths return 404. Maintenance snapshots and scripts are outside the deployed assets directory.
@@ -40,7 +54,7 @@ https://cdn.jsdelivr.net/gh/g-kannan/dbxcosts@<ref>/resources/azure-databricks-c
 https://cdn.jsdelivr.net/gh/g-kannan/dbxcosts@<ref>/resources/gcp-databricks-costs.json
 ```
 
-Pin a commit SHA or release tag when consumers need reproducible prices. These URLs are templates; the datasets have not been published by this change.
+Pin a commit SHA or release tag when consumers need reproducible prices.
 
 ```js
 const url = `https://cdn.jsdelivr.net/gh/g-kannan/dbxcosts@${ref}/resources/${cloud}-databricks-costs.json`;
