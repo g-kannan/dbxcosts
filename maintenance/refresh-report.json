@@ -1,0 +1,43 @@
+{
+  "retrievedOn": "2026-10-09",
+  "checked": 102,
+  "changes": [],
+  "unresolved": [
+    {
+      "cloud": "gcp",
+      "regionId": "us-east1",
+      "instanceId": "c3-standard-16",
+      "retainedRate": 0.806432
+    },
+    {
+      "cloud": "gcp",
+      "regionId": "us-east1",
+      "instanceId": "c3-standard-32",
+      "retainedRate": 1.612864
+    },
+    {
+      "cloud": "gcp",
+      "regionId": "us-east1",
+      "instanceId": "c3-standard-64",
+      "retainedRate": 3.225728
+    },
+    {
+      "cloud": "gcp",
+      "regionId": "asia-south1",
+      "instanceId": "c3-standard-16",
+      "retainedRate": 0.83868928
+    },
+    {
+      "cloud": "gcp",
+      "regionId": "asia-south1",
+      "instanceId": "c3-standard-32",
+      "retainedRate": 1.67737856
+    },
+    {
+      "cloud": "gcp",
+      "regionId": "asia-south1",
+      "instanceId": "c3-standard-64",
+      "retainedRate": 3.35475712
+    }
+  ]
+}

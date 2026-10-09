@@ -1,0 +1,374 @@
+{
+  "schemaVersion": 1,
+  "name": "Azure and Databricks cost catalog",
+  "cloud": "Azure",
+  "currency": "USD",
+  "units": {
+    "dbuRate": "USD per DBU-hour",
+    "vmHourlyRate": "USD per VM-hour",
+    "dbuPerHour": "DBU-hours per hour",
+    "memory": "GiB"
+  },
+  "source": {
+    "pricingReference": {
+      "label": "Microsoft Azure Databricks pricing",
+      "url": "https://azure.microsoft.com/en-us/pricing/details/databricks/"
+    },
+    "vmPricingReference": {
+      "provider": "Vantage Instances",
+      "basis": "Linux on-demand USD/hour",
+      "refreshedOn": "2026-10-09",
+      "url": "https://instances.vantage.sh/",
+      "method": "Vantage Instances MCP",
+      "checkedOn": "2026-10-09",
+      "refreshStatus": "complete",
+      "unresolved": []
+    }
+  },
+  "azure": {
+    "description": "Microsoft Azure",
+    "defaultRegion": "centralindia",
+    "regions": [
+      {
+        "id": "eastus",
+        "label": "US East"
+      },
+      {
+        "id": "centralindia",
+        "label": "Central India"
+      }
+    ],
+    "vmOnDemandHourly": {
+      "eastus": {
+        "Standard_E8ds_v4": 0.576,
+        "Standard_E16ds_v4": 1.152,
+        "Standard_E32ds_v4": 2.304,
+        "Standard_E64ds_v4": 4.608,
+        "Standard_D4s_v5": 0.192,
+        "Standard_D8s_v5": 0.384,
+        "Standard_D16s_v5": 0.768,
+        "Standard_D32s_v5": 1.536,
+        "Standard_D64s_v5": 3.072,
+        "Standard_F4s_v2": 0.169,
+        "Standard_F8s_v2": 0.338,
+        "Standard_F16s_v2": 0.677,
+        "Standard_F32s_v2": 1.353,
+        "Standard_F64s_v2": 2.706,
+        "Standard_E4s_v5": 0.252,
+        "Standard_E8s_v5": 0.504,
+        "Standard_E16s_v5": 1.008,
+        "Standard_E32s_v5": 2.016,
+        "Standard_E64s_v5": 4.032
+      },
+      "centralindia": {
+        "Standard_E8ds_v4": 0.604,
+        "Standard_E16ds_v4": 1.208,
+        "Standard_E32ds_v4": 2.416,
+        "Standard_E64ds_v4": 4.832,
+        "Standard_D4s_v5": 0.202,
+        "Standard_D8s_v5": 0.404,
+        "Standard_D16s_v5": 0.808,
+        "Standard_D32s_v5": 1.616,
+        "Standard_D64s_v5": 3.232,
+        "Standard_F4s_v2": 0.17,
+        "Standard_F8s_v2": 0.34,
+        "Standard_F16s_v2": 0.68,
+        "Standard_F32s_v2": 1.36,
+        "Standard_F64s_v2": 2.72,
+        "Standard_E4s_v5": 0.26,
+        "Standard_E8s_v5": 0.52,
+        "Standard_E16s_v5": 1.04,
+        "Standard_E32s_v5": 2.08,
+        "Standard_E64s_v5": 4.16
+      }
+    },
+    "databricks": {
+      "sqlDbuRates": {
+        "eastus": {
+          "classic-sql": {
+            "rate": 0.22,
+            "includesCloudInstance": false
+          },
+          "pro-sql": {
+            "rate": 0.55,
+            "includesCloudInstance": false
+          },
+          "serverless-sql": {
+            "rate": 0.7,
+            "includesCloudInstance": true
+          }
+        },
+        "centralindia": {
+          "classic-sql": {
+            "rate": 0.22,
+            "includesCloudInstance": false
+          },
+          "pro-sql": {
+            "rate": 0.61,
+            "includesCloudInstance": false
+          },
+          "serverless-sql": {
+            "rate": 0.77,
+            "includesCloudInstance": true
+          }
+        }
+      },
+      "jobsDbuRates": {
+        "eastus": {
+          "jobs-classic": {
+            "rate": 0.3,
+            "includesCloudInstance": false
+          },
+          "jobs-serverless": {
+            "rate": 0.45,
+            "includesCloudInstance": true
+          }
+        },
+        "centralindia": {
+          "jobs-classic": {
+            "rate": 0.3,
+            "includesCloudInstance": false
+          },
+          "jobs-serverless": {
+            "rate": 0.47,
+            "includesCloudInstance": true
+          }
+        }
+      },
+      "allPurposeDbuRates": {
+        "eastus": {
+          "rate": 0.55,
+          "includesCloudInstance": false
+        },
+        "centralindia": {
+          "rate": 0.55,
+          "includesCloudInstance": false
+        }
+      },
+      "warehouseWorkerInstance": "Standard_E8ds_v4",
+      "warehouseSizes": [
+        {
+          "size": "2X-Small",
+          "instance": "Standard_E8ds_v4",
+          "workers": 1,
+          "vcpu": 8,
+          "memory": 61,
+          "dbuPerHour": 4
+        },
+        {
+          "size": "X-Small",
+          "instance": "Standard_E8ds_v4",
+          "workers": 2,
+          "vcpu": 8,
+          "memory": 61,
+          "dbuPerHour": 6
+        },
+        {
+          "size": "Small",
+          "instance": "Standard_E16ds_v4",
+          "workers": 4,
+          "vcpu": 16,
+          "memory": 122,
+          "dbuPerHour": 12
+        },
+        {
+          "size": "Medium",
+          "instance": "Standard_E32ds_v4",
+          "workers": 8,
+          "vcpu": 32,
+          "memory": 244,
+          "dbuPerHour": 24
+        },
+        {
+          "size": "Large",
+          "instance": "Standard_E32ds_v4",
+          "workers": 16,
+          "vcpu": 32,
+          "memory": 244,
+          "dbuPerHour": 40
+        },
+        {
+          "size": "X-Large",
+          "instance": "Standard_E64ds_v4",
+          "workers": 32,
+          "vcpu": 64,
+          "memory": 488,
+          "dbuPerHour": 80
+        },
+        {
+          "size": "2X-Large",
+          "instance": "Standard_E64ds_v4",
+          "workers": 64,
+          "vcpu": 64,
+          "memory": 488,
+          "dbuPerHour": 144
+        },
+        {
+          "size": "3X-Large",
+          "instance": "Standard_E64ds_v4",
+          "workers": 128,
+          "vcpu": 64,
+          "memory": 488,
+          "dbuPerHour": 272
+        },
+        {
+          "size": "4X-Large",
+          "instance": "Standard_E64ds_v4",
+          "workers": 256,
+          "vcpu": 64,
+          "memory": 488,
+          "dbuPerHour": 528
+        },
+        {
+          "size": "5X-Large",
+          "instance": "Standard_E64ds_v4",
+          "workers": 512,
+          "vcpu": 64,
+          "memory": 488,
+          "dbuPerHour": 1042
+        }
+      ],
+      "jobInstances": [
+        {
+          "id": "Standard_E8ds_v4",
+          "family": "Memory optimized",
+          "vcpu": 8,
+          "memory": 64,
+          "dbuPerHour": 2
+        },
+        {
+          "id": "Standard_E16ds_v4",
+          "family": "Memory optimized",
+          "vcpu": 16,
+          "memory": 128,
+          "dbuPerHour": 4
+        },
+        {
+          "id": "Standard_E32ds_v4",
+          "family": "Memory optimized",
+          "vcpu": 32,
+          "memory": 256,
+          "dbuPerHour": 8
+        },
+        {
+          "id": "Standard_E64ds_v4",
+          "family": "Memory optimized",
+          "vcpu": 64,
+          "memory": 504,
+          "dbuPerHour": 16
+        },
+        {
+          "id": "Standard_D4s_v5",
+          "family": "General purpose",
+          "vcpu": 4,
+          "memory": 16,
+          "dbuPerHour": 1
+        },
+        {
+          "id": "Standard_D8s_v5",
+          "family": "General purpose",
+          "vcpu": 8,
+          "memory": 32,
+          "dbuPerHour": 2
+        },
+        {
+          "id": "Standard_D16s_v5",
+          "family": "General purpose",
+          "vcpu": 16,
+          "memory": 64,
+          "dbuPerHour": 4
+        },
+        {
+          "id": "Standard_D32s_v5",
+          "family": "General purpose",
+          "vcpu": 32,
+          "memory": 128,
+          "dbuPerHour": 8
+        },
+        {
+          "id": "Standard_D64s_v5",
+          "family": "General purpose",
+          "vcpu": 64,
+          "memory": 256,
+          "dbuPerHour": 16
+        },
+        {
+          "id": "Standard_F4s_v2",
+          "family": "Compute optimized",
+          "vcpu": 4,
+          "memory": 8,
+          "dbuPerHour": 1
+        },
+        {
+          "id": "Standard_F8s_v2",
+          "family": "Compute optimized",
+          "vcpu": 8,
+          "memory": 16,
+          "dbuPerHour": 2
+        },
+        {
+          "id": "Standard_F16s_v2",
+          "family": "Compute optimized",
+          "vcpu": 16,
+          "memory": 32,
+          "dbuPerHour": 4
+        },
+        {
+          "id": "Standard_F32s_v2",
+          "family": "Compute optimized",
+          "vcpu": 32,
+          "memory": 64,
+          "dbuPerHour": 8
+        },
+        {
+          "id": "Standard_F64s_v2",
+          "family": "Compute optimized",
+          "vcpu": 64,
+          "memory": 128,
+          "dbuPerHour": 16
+        },
+        {
+          "id": "Standard_E4s_v5",
+          "family": "Memory optimized",
+          "vcpu": 4,
+          "memory": 32,
+          "dbuPerHour": 1
+        },
+        {
+          "id": "Standard_E8s_v5",
+          "family": "Memory optimized",
+          "vcpu": 8,
+          "memory": 64,
+          "dbuPerHour": 2
+        },
+        {
+          "id": "Standard_E16s_v5",
+          "family": "Memory optimized",
+          "vcpu": 16,
+          "memory": 128,
+          "dbuPerHour": 4
+        },
+        {
+          "id": "Standard_E32s_v5",
+          "family": "Memory optimized",
+          "vcpu": 32,
+          "memory": 256,
+          "dbuPerHour": 8
+        },
+        {
+          "id": "Standard_E64s_v5",
+          "family": "Memory optimized",
+          "vcpu": 64,
+          "memory": 512,
+          "dbuPerHour": 16
+        }
+      ]
+    }
+  },
+  "notes": [
+    "VM rates checked using Vantage Instances MCP; consult source.vmPricingReference for unresolved stale rates. Databricks DBU rates remain copied planning figures.",
+    "Rates exclude taxes and reserved-pricing discounts.",
+    "includesCloudInstance=true means infrastructure is included in the DBU rate.",
+    "Classic compute adds driver and worker VM charges to DBU charges."
+  ]
+}

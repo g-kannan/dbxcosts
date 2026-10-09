@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "name": "AWS and Databricks cost catalog",
+  "cloud": "AWS",
+  "currency": "USD",
+  "units": {
+    "dbuRate": "USD per DBU-hour",
+    "vmHourlyRate": "USD per VM-hour",
+    "dbuPerHour": "DBU-hours per hour",
+    "memory": "GiB"
+  },
+  "source": {
+    "pricingReference": {
+      "label": "Databricks AWS pricing",
+      "url": "https://www.databricks.com/product/pricing/product-pricing/instance-types"
+    },
+    "vmPricingReference": {
+      "provider": "Vantage Instances",
+      "basis": "Linux on-demand USD/hour",
+      "refreshedOn": "2026-10-09",
+      "url": "https://instances.vantage.sh/",
+      "method": "Vantage Instances MCP",
+      "checkedOn": "2026-10-09",
+      "refreshStatus": "complete",
+      "unresolved": []
+    }
+  },
+  "aws": {
+    "description": "Amazon Web Services",
+    "defaultRegion": "ap-south-1",
+    "regions": [
+      {
+        "id": "us-east-1",
+        "label": "US East (N. Virginia)"
+      },
+      {
+        "id": "ap-south-1",
+        "label": "Asia Pacific (Mumbai)"
+      }
+    ],
+    "vmOnDemandHourly": {
+      "us-east-1": {
+        "i3.xlarge": 0.312,
+        "i3.2xlarge": 0.624,
+        "i3.4xlarge": 1.248,
+        "i3.8xlarge": 2.496,
+        "i3.16xlarge": 4.992,
+        "m6i.xlarge": 0.192,
+        "m6i.2xlarge": 0.384,
+        "m6i.4xlarge": 0.768,
+        "m6i.8xlarge": 1.536,
+        "m6i.16xlarge": 3.072,
+        "c6i.xlarge": 0.17,
+        "c6i.2xlarge": 0.34,
+        "c6i.4xlarge": 0.68,
+        "c6i.8xlarge": 1.36,
+        "c6i.16xlarge": 2.72,
+        "r6i.xlarge": 0.252,
+        "r6i.2xlarge": 0.504,
+        "r6i.4xlarge": 1.008,
+        "r6i.8xlarge": 2.016,
+        "r6i.16xlarge": 4.032
+      },
+      "ap-south-1": {
+        "i3.xlarge": 0.354,
+        "i3.2xlarge": 0.708,
+        "i3.4xlarge": 1.416,
+        "i3.8xlarge": 2.832,
+        "i3.16xlarge": 5.664,
+        "m6i.xlarge": 0.202,
+        "m6i.2xlarge": 0.404,
+        "m6i.4xlarge": 0.808,
+        "m6i.8xlarge": 1.616,
+        "m6i.16xlarge": 3.232,
+        "c6i.xlarge": 0.17,
+        "c6i.2xlarge": 0.34,
+        "c6i.4xlarge": 0.68,
+        "c6i.8xlarge": 1.36,
+        "c6i.16xlarge": 2.72,
+        "r6i.xlarge": 0.26,
+        "r6i.2xlarge": 0.52,
+        "r6i.4xlarge": 1.04,
+        "r6i.8xlarge": 2.08,
+        "r6i.16xlarge": 4.16
+      }
+    },
+    "databricks": {
+      "sqlDbuRates": {
+        "us-east-1": {
+          "classic-sql": {
+            "rate": 0.22,
+            "includesCloudInstance": false
+          },
+          "pro-sql": {
+            "rate": 0.55,
+            "includesCloudInstance": false
+          },
+          "serverless-sql": {
+            "rate": 0.7,
+            "includesCloudInstance": true
+          }
+        },
+        "ap-south-1": {
+          "classic-sql": {
+            "rate": 0.22,
+            "includesCloudInstance": false
+          },
+          "pro-sql": {
+            "rate": 0.61,
+            "includesCloudInstance": false
+          },
+          "serverless-sql": {
+            "rate": 0.77,
+            "includesCloudInstance": true
+          }
+        }
+      },
+      "jobsDbuRates": {
+        "us-east-1": {
+          "jobs-classic": {
+            "rate": 0.2,
+            "includesCloudInstance": false
+          },
+          "jobs-serverless": {
+            "rate": 0.45,
+            "includesCloudInstance": true
+          }
+        },
+        "ap-south-1": {
+          "jobs-classic": {
+            "rate": 0.2,
+            "includesCloudInstance": false
+          },
+          "jobs-serverless": {
+            "rate": 0.47,
+            "includesCloudInstance": true
+          }
+        }
+      },
+      "allPurposeDbuRates": {
+        "us-east-1": {
+          "rate": 0.65,
+          "includesCloudInstance": false
+        },
+        "ap-south-1": {
+          "rate": 0.65,
+          "includesCloudInstance": false
+        }
+      },
+      "warehouseWorkerInstance": "i3.2xlarge",
+      "warehouseSizes": [
+        {
+          "size": "2X-Small",
+          "instance": "i3.2xlarge",
+          "workers": 1,
+          "vcpu": 8,
+          "memory": 61,
+          "dbuPerHour": 4
+        },
+        {
+          "size": "X-Small",
+          "instance": "i3.2xlarge",
+          "workers": 2,
+          "vcpu": 8,
+          "memory": 61,
+          "dbuPerHour": 6
+        },
+        {
+          "size": "Small",
+          "instance": "i3.4xlarge",
+          "workers": 4,
+          "vcpu": 16,
+          "memory": 122,
+          "dbuPerHour": 12
+        },
+        {
+          "size": "Medium",
+          "instance": "i3.8xlarge",
+          "workers": 8,
+          "vcpu": 32,
+          "memory": 244,
+          "dbuPerHour": 24
+        },
+        {
+          "size": "Large",
+          "instance": "i3.8xlarge",
+          "workers": 16,
+          "vcpu": 32,
+          "memory": 244,
+          "dbuPerHour": 40
+        },
+        {
+          "size": "X-Large",
+          "instance": "i3.16xlarge",
+          "workers": 32,
+          "vcpu": 64,
+          "memory": 488,
+          "dbuPerHour": 80
+        },
+        {
+          "size": "2X-Large",
+          "instance": "i3.16xlarge",
+          "workers": 64,
+          "vcpu": 64,
+          "memory": 488,
+          "dbuPerHour": 144
+        },
+        {
+          "size": "3X-Large",
+          "instance": "i3.16xlarge",
+          "workers": 128,
+          "vcpu": 64,
+          "memory": 488,
+          "dbuPerHour": 272
+        },
+        {
+          "size": "4X-Large",
+          "instance": "i3.16xlarge",
+          "workers": 256,
+          "vcpu": 64,
+          "memory": 488,
+          "dbuPerHour": 528
+        },
+        {
+          "size": "5X-Large",
+          "instance": "i3.16xlarge",
+          "workers": 512,
+          "vcpu": 64,
+          "memory": 488,
+          "dbuPerHour": 1042
+        }
+      ],
+      "jobInstances": [
+        {
+          "id": "i3.xlarge",
+          "family": "Storage optimized",
+          "vcpu": 4,
+          "memory": 30.5,
+          "dbuPerHour": 1,
+          "dbuPerHourBasis": "Planning assumption scaled from the existing i3.2xlarge catalog value; not verified by Vantage."
+        },
+        {
+          "id": "i3.2xlarge",
+          "family": "Storage optimized",
+          "vcpu": 8,
+          "memory": 61,
+          "dbuPerHour": 2
+        },
+        {
+          "id": "i3.4xlarge",
+          "family": "Storage optimized",
+          "vcpu": 16,
+          "memory": 122,
+          "dbuPerHour": 4
+        },
+        {
+          "id": "i3.8xlarge",
+          "family": "Storage optimized",
+          "vcpu": 32,
+          "memory": 244,
+          "dbuPerHour": 8
+        },
+        {
+          "id": "i3.16xlarge",
+          "family": "Storage optimized",
+          "vcpu": 64,
+          "memory": 488,
+          "dbuPerHour": 16
+        },
+        {
+          "id": "m6i.xlarge",
+          "family": "General purpose",
+          "vcpu": 4,
+          "memory": 16,
+          "dbuPerHour": 0.76
+        },
+        {
+          "id": "m6i.2xlarge",
+          "family": "General purpose",
+          "vcpu": 8,
+          "memory": 32,
+          "dbuPerHour": 1.52
+        },
+        {
+          "id": "m6i.4xlarge",
+          "family": "General purpose",
+          "vcpu": 16,
+          "memory": 64,
+          "dbuPerHour": 3.04
+        },
+        {
+          "id": "m6i.8xlarge",
+          "family": "General purpose",
+          "vcpu": 32,
+          "memory": 128,
+          "dbuPerHour": 6.08
+        },
+        {
+          "id": "m6i.16xlarge",
+          "family": "General purpose",
+          "vcpu": 64,
+          "memory": 256,
+          "dbuPerHour": 12.16
+        },
+        {
+          "id": "c6i.xlarge",
+          "family": "Compute optimized",
+          "vcpu": 4,
+          "memory": 8,
+          "dbuPerHour": 0.7
+        },
+        {
+          "id": "c6i.2xlarge",
+          "family": "Compute optimized",
+          "vcpu": 8,
+          "memory": 16,
+          "dbuPerHour": 1.39
+        },
+        {
+          "id": "c6i.4xlarge",
+          "family": "Compute optimized",
+          "vcpu": 16,
+          "memory": 32,
+          "dbuPerHour": 2.78
+        },
+        {
+          "id": "c6i.8xlarge",
+          "family": "Compute optimized",
+          "vcpu": 32,
+          "memory": 64,
+          "dbuPerHour": 5.56
+        },
+        {
+          "id": "c6i.16xlarge",
+          "family": "Compute optimized",
+          "vcpu": 64,
+          "memory": 128,
+          "dbuPerHour": 11.13
+        },
+        {
+          "id": "r6i.xlarge",
+          "family": "Memory optimized",
+          "vcpu": 4,
+          "memory": 32,
+          "dbuPerHour": 1.02
+        },
+        {
+          "id": "r6i.2xlarge",
+          "family": "Memory optimized",
+          "vcpu": 8,
+          "memory": 64,
+          "dbuPerHour": 2.04
+        },
+        {
+          "id": "r6i.4xlarge",
+          "family": "Memory optimized",
+          "vcpu": 16,
+          "memory": 128,
+          "dbuPerHour": 4.08
+        },
+        {
+          "id": "r6i.8xlarge",
+          "family": "Memory optimized",
+          "vcpu": 32,
+          "memory": 256,
+          "dbuPerHour": 8.16
+        },
+        {
+          "id": "r6i.16xlarge",
+          "family": "Memory optimized",
+          "vcpu": 64,
+          "memory": 512,
+          "dbuPerHour": 16.32
+        }
+      ]
+    }
+  },
+  "notes": [
+    "VM rates checked using Vantage Instances MCP; Databricks DBU rates remain copied planning figures.",
+    "Rates exclude taxes and reserved-pricing discounts.",
+    "includesCloudInstance=true means infrastructure is included in the DBU rate.",
+    "Classic compute adds driver and worker VM charges to DBU charges."
+  ]
+}
