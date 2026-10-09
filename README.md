@@ -77,9 +77,7 @@ Classic compute cost is DBU/hour × DBU rate × runtime hours, plus (driver VM r
 
 ## Provenance and maintenance
 
-The initial datasets were exported from the local `brickseasy` pricing catalog on 2026-10-09. Its resources folder contained AWS and Azure JSONs; GCP data came from its TypeScript catalog. All three exports use the current catalog values and retain vendor references and the source VM pricing refresh date of 2026-07-21.
-
-Source repository Git metadata, application code, configuration, branding, estimator defaults, UI flags, and pricing multipliers were not copied. Warehouse fallback hourly rates were omitted because they are AWS-based; use each cloud's explicit regional VM rates.
+VM infrastructure prices are sourced from [Vantage Instances](https://instances.vantage.sh/) through Vantage Instances MCP. The dated MCP responses are retained in [vantage-snapshot.json](maintenance/vantage-snapshot.json) for audit and repeatable updates. Use each cloud's explicit regional VM rates when calculating infrastructure costs.
 
 VM prices were checked against Vantage Instances MCP on 2026-10-09: 102 regional rates matched. Six existing GCP C3 rates could not be retrieved and remain explicitly listed as unresolved in `source.vmPricingReference` and [refresh-report.json](maintenance/refresh-report.json). GCP retains its previous full-refresh date; `checkedOn` records this partial check. AWS and Azure have complete VM refreshes.
 

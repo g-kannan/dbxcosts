@@ -376,7 +376,7 @@
     }
   },
   "notes": [
-    "VM rates checked using Vantage Instances MCP; Databricks DBU rates remain copied planning figures.",
+    "VM prices sourced from Vantage Instances MCP; Databricks DBU rates are planning figures and require separate verification against Databricks pricing references.",
     "Rates exclude taxes and reserved-pricing discounts.",
     "includesCloudInstance=true means infrastructure is included in the DBU rate.",
     "Classic compute adds driver and worker VM charges to DBU charges."
