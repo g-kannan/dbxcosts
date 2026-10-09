@@ -10,6 +10,28 @@ Static Databricks cost catalogs for AWS, Azure, and Google Cloud. This repositor
 
 ## CDN access
 
+### Cloudflare Workers
+
+`wrangler.jsonc` serves only `resources/` as static assets. No build command or application entry point is needed. In Cloudflare Workers Builds, leave the build command empty and keep the deploy command as `npx wrangler deploy`. The configured Worker name is `dbxcosts`; it must match the Worker connected to the repository.
+
+After deployment, the files are served at the root of your Worker or custom domain:
+
+```text
+https://<your-worker-domain>/aws-databricks-costs.json
+https://<your-worker-domain>/azure-databricks-costs.json
+https://<your-worker-domain>/gcp-databricks-costs.json
+```
+
+JSON responses allow cross-origin browser access and use a five-minute browser cache. Unknown paths return 404. Maintenance snapshots and scripts are outside the deployed assets directory.
+
+Validate locally without publishing:
+
+```powershell
+npx wrangler deploy --dry-run
+```
+
+### jsDelivr
+
 After these files are pushed to the public GitHub repository, use these jsDelivr URL templates, replacing `<ref>` with a published commit SHA, tag, or branch:
 
 ```text
